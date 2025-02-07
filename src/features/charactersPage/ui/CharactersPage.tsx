@@ -7,6 +7,7 @@ import { CustomPagination } from 'common/components/pagination/CustomPagination'
 import { SearchInput } from 'common/components/searchInput/SearchInput'
 
 const START_PAGE = 1;
+const SEARCH_DELAY = 500;
 
 export const CharactersPage = () => {
 
@@ -36,12 +37,16 @@ export const CharactersPage = () => {
 
 	useEffect(() => {
 		if (inputValue.length >= 3) {
-			setPage(START_PAGE)
-			getCharacters({ name: inputValue, page: START_PAGE });
+			const handler = setTimeout(() => {
+				setPage(START_PAGE);
+				getCharacters({ name: inputValue, page: START_PAGE });
+			}, SEARCH_DELAY);
+
+			return () => clearTimeout(handler);
 		}
 	}, [inputValue, getCharacters]);
 
-	
+
 	const changePageNumber = (currentPage: number) => {
 		setPage(currentPage)
 		getCharacters({name: inputValue, page: currentPage})
