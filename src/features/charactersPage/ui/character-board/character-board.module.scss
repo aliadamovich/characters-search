@@ -1,0 +1,50 @@
+@import '../../../../styles/global.scss';
+
+.board {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+}
+
+.card {
+	min-width: 300px;
+	flex: 1 1 30%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 56px;
+	box-shadow: 0px 7px 25px 0px rgba(100, 100, 111, 0.2);
+	background: rgb(255, 255, 255);
+	padding: 20px 34px;
+
+	&:hover{
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+	}
+}
+
+
+.characterName {
+	font-size: 30px;
+}
+.infoWrapper {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 15px;
+}
+
+.status {
+	@include msrt;
+	font-size: 14px;
+	color: rgb(118, 118, 118);
+	
+	span {
+		font-weight: 700;
+		color: rgb(38, 117, 4);
+	}
+}
+
+.date {
+	@extend .status;
+	white-space: nowrap;
+}

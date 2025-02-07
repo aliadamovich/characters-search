@@ -1,0 +1,25 @@
+@import '../../../styles/global.scss';
+
+.wrapper {
+	margin: 128px auto;
+	max-width: 1610px;
+	padding: 0 10px;
+	text-align: center;
+
+	@media screen and (max-width:500px){
+		margin: 60px auto;
+	};
+}
+
+.count {
+	@include msrt;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 2.14;
+	margin-bottom: 68px;
+}
+
+.error {
+	@include msrt;
+	font-size: 18px;
+}

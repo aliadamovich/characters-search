@@ -1,0 +1,36 @@
+*,
+	*::before,
+	*::after {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+}
+
+
+body {
+  margin: 0;
+  font-family: "Fira Sans", serif;
+	font-size: 25px;
+	line-height: 1.2;
+	font-weight: 400;
+	color: rgb(40, 38, 38);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+		text-decoration: none;
+		color: inherit;
+		&:hover{
+			text-decoration: none;
+		}
+	}
+
+h1, h2, h4, h5, h6 {
+	font-size: inherit;
+	font-weight: 400;
+}
+
+@mixin msrt {
+	font-family: "Montserrat", serif;
+}
