@@ -1,19 +1,3 @@
-import { charactersApi } from "./charactersApi"
-
-// export type ServerResponse = {
-// 	info: {
-// 		count: number
-// 		pages: number
-// 		next: null
-// 		prev: null
-// 	},
-// 	results: Character[]
-// }
-
-// export type Character = ReturnType<typeof charactersApi.endpoints.getCharactersByName.useQuery>
-export type ServerResponse = ReturnType<typeof charactersApi.endpoints.getCharactersByName.useQuery>
-
-
 
 type Info = {
 	count: number
@@ -22,12 +6,10 @@ type Info = {
 	prev: string | null
 }
 
-
 type Location = {
 	name: string
 	url: string
 }
-
 
 export type Character = {
 	id: number

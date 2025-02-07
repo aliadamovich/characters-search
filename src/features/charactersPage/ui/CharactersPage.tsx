@@ -6,12 +6,14 @@ import { CharactersBoard } from 'features/charactersPage/ui/character-board/Char
 import { CustomPagination } from 'common/components/pagination/CustomPagination'
 import { SearchInput } from 'common/components/searchInput/SearchInput'
 
+const START_PAGE = 1;
+
 export const CharactersPage = () => {
 
 	const [getCharacters, { data, isError, error: err, isFetching }] = useLazyGetCharactersByNameQuery()
 	const [charactersList, setCharactersList] = useState<Character[]>([]);
 	const charactersQuantity = data?.info?.count;
-	const [page, setPage] = useState(1);
+	const [page, setPage] = useState(START_PAGE);
 	const [inputValue, setInputValue] = useState('');
 
 	let errMsg;
@@ -34,10 +36,12 @@ export const CharactersPage = () => {
 
 	useEffect(() => {
 		if (inputValue.length >= 3) {
-			getCharacters({ name: inputValue, page });
+			setPage(START_PAGE)
+			getCharacters({ name: inputValue, page: START_PAGE });
 		}
 	}, [inputValue, getCharacters]);
 
+	
 	const changePageNumber = (currentPage: number) => {
 		setPage(currentPage)
 		getCharacters({name: inputValue, page: currentPage})
@@ -49,7 +53,6 @@ export const CharactersPage = () => {
 			<SearchInput
 				inputValue={inputValue}
 				setInputValue={setInputValue}
-			// searchCharacter={getCharacters} page={page}
 			/>
 			{
 				charactersQuantity && !isFetching && !isError && <p className={s.count}>Found characters: {charactersQuantity}</p>
@@ -64,7 +67,6 @@ export const CharactersPage = () => {
 						</>
 					)
 			}
-			{/* {charactersList.length && !isError && <CustomPagination pagesNumber={data?.info.pages || 0} changePageNumber={changePageNumber}/>} */}
 		</div>
 	)
 }
